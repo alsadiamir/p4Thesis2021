@@ -1,0 +1,17 @@
+**********************STEP 1 - CONTROLLO CLONAGGIO***********************
+Aprire 2 terminali dentro la cartella clone_examples
+I terminale: p4c-bm2-ss --p4v 16 basic.p4 -o basic.json
+I terminale: sudo python start_test_topo.py
+I terminale: xterm h1 h2 h3 h4
+II terminale: sudo python cmd_add.py
+h1: ./send.py 10.0.0.2 "message payload"
+h3 e h4: ./receive.py
+
+VERIFICARE CHE h3 riceva il messaggio, ma non h4
+
+**********************STEP 2 - CONTROLLO TUNNELING***********************
+I terminale: xterm h3 (per aprire nuovo terminale in cui controllare messaggi tunneled a h3)
+h3(2) e h4: ./receive.py
+h3: ./send.py 10.0.0.4 "message payload"
+
+CONTROLLARE CHE h3(2) riceva il messaggio tunneled su se stesso
