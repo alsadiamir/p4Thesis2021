@@ -1,7 +1,0 @@
-I terminale: p4c-bm2-ss --p4v 16 basic_e2e.p4 -o basic.json
-I terminale: sudo python start_test_topo.py
-I terminale: xterm h1 h2 h3
-II terminale: sudo python cmd_add.py
-h1: ping -c 3 10.0.0.2 OPPURE ./send.py 10.0.0.2 "message payload"
-h3: tcpdump -i eth0 OPPURE ./receive.py
-h2 e h3: ./receive.py
