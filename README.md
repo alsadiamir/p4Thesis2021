@@ -1,5 +1,5 @@
 # p4Thesis2021
-This repo os designed to track every step of my P4 thesis.
+This repo is designed to track every step of my P4 thesis.
 
 Some example of clones to kick off the repo:
 
