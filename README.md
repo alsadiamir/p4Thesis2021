@@ -1,5 +1,4 @@
 # p4Thesis2021
-This repo is designed to track every step of my P4 thesis.
 
 **Some examples to kick off the repo:**
 
