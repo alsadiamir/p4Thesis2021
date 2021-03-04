@@ -2,6 +2,7 @@
 A 3 hosts, 1 switch network that clones every packet exchanged between h1 and h2 to h3. The clone happens between the ingress and egress queue.
 <img src="../../misc/img/P4img-basic.png" alt="basic-e2e.png" style="zoom:30%;"/> 
 
+**Host IPs are numbered from 10.0.0.1 to 10.0.0.3 from h1 to h3.**
 
 # How to run it
 First open 2 terminals in clone_example/basic_e2e.
