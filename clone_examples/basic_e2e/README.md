@@ -16,7 +16,7 @@ sudo python start_test_topo.py
 xterm h1 h2 h3
 ```
 
-In the **second terminal** run the following command to add the rules written in cmd.txt to the switch s1:
+In the **second terminal** run the following command to add the rules written in cmd.txt to the switch s1, that enable forwarding between h1 and h2 with the clone to h3:
 ```shell
 sudo python cmd_app.py
 ```
