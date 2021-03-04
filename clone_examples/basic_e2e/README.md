@@ -4,7 +4,7 @@ A 3 hosts, 1 switch network that clones every packet exchanged between h1 and h2
 
 
 # How to run it
-First open 2 terminals in clone_example/basic.
+First open 2 terminals in clone_example/basic_e2e.
 
 In the **first terminal** run the following commands, to:
 1. generate a JSON file with the description of the basic.p4 rules
