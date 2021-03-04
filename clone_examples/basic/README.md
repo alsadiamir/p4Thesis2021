@@ -22,12 +22,12 @@ In the **second terminal** run the following command to add the rules written in
 sudo python cmd_app.py
 ```
 
-Then, in the **h2 and h3 terminals**, run the command to start listening to TCP packets:
+Then, in the **h2 and h3 terminals**, run the following command to start listening to TCP packets:
 ```shell
 ./receive.py
 ```
 
-Then, in the **h1 terminal** run the command to send a packet to h2:
+Then, in the **h1 terminal** run the following command to send a packet to h2:
 ```shell
 ./send.py 10.0.0.2 "message payload"
 ```
