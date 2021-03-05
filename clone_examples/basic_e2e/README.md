@@ -1,11 +1,11 @@
-# Simple network with ingress 2 egress cloning
+# Simple network with egress 2 egress cloning
 A 3 hosts, 1 switch network that clones every packet exchanged between h1 and h2 to h3. The clone happens between the ingress and egress queue.
-<img src="../../misc/img/P4img-basic.png" alt="basic-i2e.png" style="zoom:30%;"/> 
+<img src="../../misc/img/P4img-basic.png" alt="basic-e2e.png" style="zoom:30%;"/> 
 
 **Host IPs are numbered from 10.0.0.1 to 10.0.0.3 from h1 to h3.**
 
 # How to run it
-First open 2 terminals in clone_example/basic.
+First open 2 terminals in clone_example/basic_e2e.
 
 In the **first terminal** run the following commands, to:
 1. generate a JSON file with the description of the basic.p4 rules
