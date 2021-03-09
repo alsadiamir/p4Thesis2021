@@ -10,7 +10,7 @@ A 4 hosts, 2 switch network that clones every packet exchanged between h1 and h2
 First open 2 terminals in clone_example/clone_with_tunnel.
 
 In the **first terminal** run the following commands, to:
-1. generate a JSON file with the description of the basic.p4 rules
+1. generate a JSON file with the description of the clone_with_tunnel.p4 rules
 2. start the topography described in test_topo.py
 3. open a terminal for every node - we will call them h1, h2, h3 and h4
 ```shell
