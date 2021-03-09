@@ -1,4 +1,4 @@
-# Simple network with ingress 2 egress cloning
+# Multiple cloning based on the source address
 A 3 hosts, 1 switch network that clones every packet exchanged between h1 and h2 to h3. The clone happens between the ingress and egress queue.
 <img src="../../misc/img/P4img-multiple_cloning.png" alt="multiple_cloning.png" style="zoom:30%;"/> 
 
