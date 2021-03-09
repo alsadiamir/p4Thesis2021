@@ -1,5 +1,5 @@
 # Multiple cloning based on the source address
-A 3 hosts, 1 switch network that clones every packet exchanged between h1 and h2 to h3. The clone happens between the ingress and egress queue.
+A 6 hosts, 1 switch network that clones every packet exchanged coming from h1 to h4, from h2 to h5 and from h3 to h6.
 <img src="../../misc/img/P4img-multiple_cloning.png" alt="multiple_cloning.png" style="zoom:30%;"/> 
 
 **Host IPs are numbered from 10.0.0.1 to 10.0.0.6 from h1 to h6.**
