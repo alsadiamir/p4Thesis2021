@@ -22,7 +22,7 @@ In the **second terminal** run the following command to add the rules written in
 sudo python cmd_add.py
 ```
 
-**Step 1**
+## Step 1
 
 Then, in the **h2, h3, h4 and h5 terminals**, run the following command to start listening to TCP packets:
 ```shell
@@ -41,7 +41,7 @@ Then, in the **h1 terminal** run the following command to send a packet to h3:
 
 **If h4 receives the message (but not h5 and h6) then the clone was successfully performed**
 
-**Step 2**
+## Step 2
 
 Then, in the **h1, h3, h4 and h5 terminals**, run the following command to start listening to TCP packets:
 ```shell
@@ -60,7 +60,7 @@ Then, in the **h2 terminal** run the following command to send a packet to h3:
 
 **If h5 receives the message (but not h4 and h6) then the clone was successfully performed**
 
-**Step 3**
+## Step 3
 
 Then, in the **h1, h2, h4 and h5 terminals**, run the following command to start listening to TCP packets:
 ```shell
