@@ -1,4 +1,4 @@
-I terminale: p4c-bm2-ss --p4v 16 clone_multiple_tunneling.p4 -o basic.json
+I terminale: p4c-bm2-ss --p4v 16 clone_multiple_mirroring.p4 -o basic.json
 I terminale: sudo python start_test_topo.py
 I terminale: xterm h1 h2 h3 h4 h5 h6
 II terminale: sudo python cmd_add.py
