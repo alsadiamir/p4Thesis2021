@@ -19,7 +19,7 @@ xterm h1 h2 h3
 
 In the **second terminal** run the following command to add the rules written in cmd.txt to the switch s1, that enable forwarding between h1 and h2 with the clone to h3:
 ```shell
-sudo python cmd_app.py
+sudo python cmd_add.py
 ```
 
 Then, in the **h2 and h3 terminals**, run the following command to start listening to TCP packets:
