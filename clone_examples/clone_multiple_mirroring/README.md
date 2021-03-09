@@ -77,4 +77,4 @@ Then, in the **h3 terminal** run the following command to send a packet to h2:
 ./send.py 10.0.0.2 "message payload"
 ```
 
-**If h6 receives the message (but not h5 and h5) then the clone was successfully performed**
+**If h6 receives the message (but not h4 and h5) then the clone was successfully performed**
