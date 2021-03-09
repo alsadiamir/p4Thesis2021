@@ -8,7 +8,7 @@ A 6 hosts, 1 switch network that clones every packet exchanged coming from h1 to
 First open 2 terminals in clone_example/clone_multiple_mirroring.
 
 In the **first terminal** run the following commands, to:
-1. generate a JSON file with the description of the basic.p4 rules
+1. generate a JSON file with the description of the clone_multiple_mirroring.p4 rules
 2. start the topography described in test_topo.py
 3. open a terminal for every node - we will call them h1, h2, h3, h4, h5 and h6
 ```shell
