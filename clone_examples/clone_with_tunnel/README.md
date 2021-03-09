@@ -23,7 +23,7 @@ In the **second terminal** run the following command to:
 1. Add the rules written in cmd.txt to the switch s1, to enable forwarding between h1 and h2, with the clone to h3.
 2. Add the rules written in cmd2.txt to the switch s2, to tunnel packets coming from h4 and h3 to h3.
 ```shell
-sudo python cmd_app.py
+sudo python cmd_add.py
 ```
 
 Then, in the **h2, h3 and h4 terminals**, run the following command to start listening to TCP packets:
