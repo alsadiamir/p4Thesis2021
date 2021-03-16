@@ -1,0 +1,1 @@
+register_write flag_rule 0 2

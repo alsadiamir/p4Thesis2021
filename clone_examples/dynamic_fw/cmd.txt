@@ -1,0 +1,5 @@
+table_add ipv4_lpm ipv4_forward 10.0.0.0/32 => 00:00:0a:00:00:00 1
+table_add ipv4_lpm ipv4_forward 10.0.0.2/32 => 00:00:0a:00:00:02 2
+table_add ipv4_lpm ipv4_forward 10.0.0.3/32 => 00:00:0a:00:00:03 3
+mirroring_add 251 4
+mirroring_add 252 5
