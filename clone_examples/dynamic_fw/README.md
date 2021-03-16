@@ -66,4 +66,4 @@ A little demo to show how this example works (**click the image to see the video
 [![Demo](https://img.youtube.com/vi/urRwQFGjCvw/0.jpg)](https://www.youtube.com/watch?v=urRwQFGjCvw)
 
 
-**You can find this video in the demo folder in mp4 format**
+You can find this video in the ***demo*** folder in mp4 format
