@@ -61,4 +61,4 @@ Then, in the **h2 terminal** run the following command to send a packet to h3:
 
 ## Demo
 A little demo to show how this example works:
-![Demo](demo/dynamic_fw_demo.mp4)
+![Demo](https://youtu.be/urRwQFGjCvw)
