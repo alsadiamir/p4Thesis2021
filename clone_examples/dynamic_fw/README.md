@@ -60,7 +60,7 @@ Then, in the **h2 terminal** run the following command to send a packet to h3:
 **If only h3 and h5 receive the packet then the switch was successfully programmed to only clone to h5**
 
 ## Demo
-A little demo to show how this example works:
+A little demo to show how this example works (**click the image to see the video**):
 
 
 [![Demo](https://img.youtube.com/vi/urRwQFGjCvw/0.jpg)](https://www.youtube.com/watch?v=urRwQFGjCvw)
