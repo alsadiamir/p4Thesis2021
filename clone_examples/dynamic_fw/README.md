@@ -61,4 +61,4 @@ Then, in the **h2 terminal** run the following command to send a packet to h3:
 
 ## Demo
 A little demo to show how this example works:
-![Demo](https://youtu.be/urRwQFGjCvw)
+[![Demo](https://img.youtube.com/vi/urRwQFGjCvw/0.jpg)](https://www.youtube.com/watch?v=urRwQFGjCvw)
