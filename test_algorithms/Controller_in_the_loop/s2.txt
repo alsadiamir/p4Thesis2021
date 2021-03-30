@@ -1,0 +1,2 @@
+table_add phy_forward forward 3 => 1
+table_add phy_forward forward 2 => 1
