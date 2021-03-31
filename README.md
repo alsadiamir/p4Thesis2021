@@ -17,4 +17,4 @@
 **Algorithms to calculate One Way Delay(OWD) of a link**
 |   [**Controller in the loop**](./test_algorithms/Controller_in_the_loop/) |                         Description                          |  
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="" alt="cll.png" style="zoom:30%;"/> | A 4 hosts, 2 switch network that calculates OWD using a Controller-in-the-Loop method.|
+| <img src="/misc/img/P4img-test_CLL.png" alt="cll.png" style="zoom:30%;"/> | A 4 hosts, 2 switch network that calculates OWD using a Controller-in-the-Loop method.|
