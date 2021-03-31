@@ -18,3 +18,5 @@
 |   [**Controller in the loop**](./test_algorithms/Controller_in_the_loop/) |                         Description                          |  
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="/misc/img/P4img-test_CLL.png" alt="cll.png" style="zoom:30%;"/> | A 4 hosts, 2 switch network that calculates OWD using a Controller-in-the-Loop method.|
+|   [**Many data loops**](./test_algorithms/Many_Data_Loops/) |                **Description**                                 | 
+| <img src="/misc/img/P4img-test_MDL.png" alt="mdl.png" style="zoom:30%;"/> | A 2 hosts, 2 switch network that calculates OWD using a Many-data-loops method.|
