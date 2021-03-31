@@ -16,7 +16,7 @@ Then, the RTT between h4 and h3 is calculated. This is the RTT of a packet that 
 **rtt_s2 = current time - timestamp of the packet**
 
 The final OWD is:
-**RTT = rtt_t - (rtt_s1 + rtt_s2) / 2**
+**OWD = rtt_t - (rtt_s1 + rtt_s2) / 2**
 
 
 # How to obtain the data
@@ -80,7 +80,7 @@ Then, in the **h4 terminal**, run the following command to send 50 packets:
 
 # OWD
 
-Run the following to calculate the final OWD given **THE ENTRIES previously calculated**
+In the **second terminal** run the following to calculate the final OWD given **THE ENTRIES previously calculated**
 ```shell
 sudo python calculate_OWD.py
 ```
