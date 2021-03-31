@@ -14,3 +14,7 @@
 |   [**Programmable cloning**](./clone_examples/dynamic_fw) |   **Description**                            |  
 |   <img src="/misc/img/P4img-dynamic_fw.png" alt="programmable.png" style="zoom:50%;"/> |A 5 hosts, 1 switch network in which host1 sets which cloning channel is enabled at the moment.|
 
+**Algorithms to calculate One Way Delay(OWD) of a link**
+|   [**Controller in the loop**](./test_algorithms/Controller_in_the_loop/) |                         Description                          |  
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="" alt="cll.png" style="zoom:30%;"/> | A 4 hosts, 2 switch network that calculates OWD using a Controller-in-the-Loop method.|
