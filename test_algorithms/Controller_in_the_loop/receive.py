@@ -44,7 +44,7 @@ def handle_pkt(pkt):
         diff = tsarr-pkt.ts
         print diff
 
-        f.write(str(diff));
+        f.write(str(diff / 2));
         f.write(",");
 
 	f.close();
