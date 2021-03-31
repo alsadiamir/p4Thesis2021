@@ -40,7 +40,7 @@ def main():
 
     print "sending on interface %s to s1" % (iface)
     pkt =  Ether(dst='00:01:00:00:00:00', type=0x1234)
-    pkt = pkt  / SendT(ts=long(get_ts()*1000))
+    pkt = pkt  / SendT(ts=long(get_ts()*1000000))
     pkt.show2()
     sendp(pkt, iface=iface, verbose=False)
 

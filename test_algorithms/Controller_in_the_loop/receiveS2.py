@@ -13,10 +13,10 @@ from scapy.layers.inet import _IPOption_HDR
 
 sys.path.append(".")
 
-from SendProbe_header import SendProbe
+from SendT_header import SendT
 
 
-filename = "data_millisecs.csv"
+filename = "data_S2.csv"
 
 def get_if():
     ifs=get_if_list()
@@ -32,21 +32,20 @@ def get_if():
 
 def handle_pkt(pkt):
     #print "got a packet!!"
-    if SendProbe in pkt or (TCP in pkt and pkt[TCP].dport == 1234):
-        if pkt.it > 0:
-            f = open(filename,"a")
-            print "got a packet,flag = "+str(pkt.P)
+    if SendT in pkt or (TCP in pkt and pkt[TCP].dport == 1234):
 
-            pkt.show2()
-            tsarr = long(time.time()*1000000)
-            print tsarr
-            diff = tsarr-pkt.ts
-            print diff
+    	f = open(filename,"a");
 
-            f.write(str(diff))
-            f.write(",")
-            f.write(str(float(diff) / float(pkt.it)))
-            f.write(",")
+        print "got a packet,flag="+str(pkt.P)
+
+        pkt.show2()
+        tsarr = long(time.time()*1000000)
+        print tsarr
+        diff = tsarr-pkt.ts
+        print diff
+
+        f.write(str(diff));
+        f.write(",");
 
 	f.close();
     sys.stdout.flush()

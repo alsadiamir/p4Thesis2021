@@ -16,7 +16,7 @@ sys.path.append(".")
 from SendT_header import SendT
 
 
-filename = "data_TS.csv"
+filename = "data_S1.csv"
 
 def get_if():
     ifs=get_if_list()
@@ -39,12 +39,12 @@ def handle_pkt(pkt):
         print "got a packet,flag="+str(pkt.P)
 
         pkt.show2()
-        tsarr = long(time.time()*1000)
+        tsarr = long(time.time()*1000000)
         print tsarr
         diff = tsarr-pkt.ts
         print diff
 
-        f.write(str(diff / 2));
+        f.write(str(diff));
         f.write(",");
 
 	f.close();
