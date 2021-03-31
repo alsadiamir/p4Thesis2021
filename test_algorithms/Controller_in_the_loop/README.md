@@ -80,7 +80,7 @@ Then, in the **h4 terminal**, run the following command to send 50 packets:
 
 # OWD
 
-Run the following to calculate the final OWD given **THE ENTRIES previouysly calculated**
+Run the following to calculate the final OWD given **THE ENTRIES previously calculated**
 ```shell
 sudo python calculate_OWD.py
 ```
