@@ -14,4 +14,3 @@
 |   [**Programmable cloning**](./clone_examples/dynamic_fw) |   **Description**                            |  
 |   <img src="/misc/img/P4img-dynamic_fw.png" alt="programmable.png" style="zoom:50%;"/> |A 5 hosts, 1 switch network in which host1 sets which cloning channel is enabled at the moment.|
 
-**Algorithm examples to calculate One Way Delay:**
