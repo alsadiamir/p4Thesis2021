@@ -26,7 +26,7 @@ In the **second terminal** run the following command to add the rules written in
 ```shell
 sudo python cmd_add.py
 ```
-# RTT_T
+# OWD of every packet
 
 Then, in the **h2 and h3 terminal**, run the following command to start listening to TCP packets:
 ```shell
