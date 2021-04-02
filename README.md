@@ -14,7 +14,7 @@
 |   [**Programmable cloning**](./clone_examples/dynamic_fw) |   **Description**                            |  
 |   <img src="/misc/img/P4img-dynamic_fw.png" alt="programmable.png" style="zoom:50%;"/> |A 5 hosts, 1 switch network in which host1 sets which cloning channel is enabled at the moment.|
 
-**Algorithms to calculate One Way Delay(OWD) of a link**
+**Algorithms to calculate One Way Delay(OWD) of a link ~ NOT SUPPORTED ANYMORE**
 |   [**Controller in the loop**](./test_algorithms/Controller_in_the_loop/) |                         Description                          |  
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="/misc/img/P4img-test_CLL.png" alt="cll.png" style="zoom:30%;"/> | A 4 hosts, 2 switch network that calculates OWD using a Controller-in-the-Loop method.|
@@ -22,3 +22,5 @@
 | <img src="/misc/img/P4img-test_MDL.png" alt="mdl.png" style="zoom:30%;"/> | A 2 hosts, 2 switch network that calculates OWD using a Many-data-loops method.|
 |   [**TTL based looping**](./test_algorithms/TTL_Based_Looping/) |                **Description**                                 | 
 | <img src="/misc/img/P4img-test_TTL.png" alt="mdl.png" style="zoom:30%;"/> | A 2 hosts, 2 switch network that calculates OWD using a TTL-based-looping method.|
+|   [**OpenNetMon**](./test_algorithms/OpenNetMon/) |                **Description**                                 | 
+| <img src="/misc/img/P4img-test_CLL.png" alt="onm.png" style="zoom:30%;"/> | A 4 hosts, 2 switch network that calculates OWD using a OpenNetMon method.|
