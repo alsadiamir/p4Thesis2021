@@ -1,4 +1,4 @@
-# Controller in the loop
+# OpenNetMon
 A 4 hosts, 2 switch network that calculates OWD using a OpenNetMon method.
 <img src="/misc/img/P4img-test_CLL.png" alt="cll.png" style="zoom:30%;"/> 
 
