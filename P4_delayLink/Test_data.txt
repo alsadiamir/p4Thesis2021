@@ -1,0 +1,2 @@
+Network(speed)      |   Coverage    |   Controller    |   Switches    |   Rules/switch
+Mininet(100 Mbps)   |   link        |   ONOS(?)       |       3       |       6     

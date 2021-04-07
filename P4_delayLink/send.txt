@@ -1,0 +1,1 @@
+sudo ./send.py --dst_id 2 --delay 0 10.0.1.1 "ping"
