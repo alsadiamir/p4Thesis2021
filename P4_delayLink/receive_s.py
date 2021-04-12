@@ -13,8 +13,8 @@ from scapy.layers.inet import _IPOption_HDR
 sys.path.append(".")
 from myTunnel_header import MyTunnel
 
-filenameS1 = "dataS1_30ms_withtraffic.csv"
-filenameS2 = "dataS2_30ms_withtraffic.csv"
+filenameS1 = "dataS1_4s.csv"
+filenameS2 = "dataS2_4s.csv"
 
 def get_if():
     ifs=get_if_list()
@@ -29,21 +29,10 @@ def get_if():
     return iface
 
 def handle_pkt(pkt):
-    if MyTunnel in pkt:
+    if MyTunnel in pkt or (TCP in pkt and pkt[TCP].dport == 1234):
         print "got a packet"
         pkt.show2()
-        if (pkt.ts_ing > 0) and (pkt.ts_eg > 0):
-            if pkt.flag_s == 1 :
-                f = open(filenameS1,"a")
-            if pkt.flag_s == 2 :
-                f = open(filenameS2,"a")
 
-            f.write(str(pkt.ts_ing))
-            f.write(",")
-            f.write(str(pkt.ts_eg))
-            f.write("\n")
-            f.close()
-        sys.stdout.flush()
 
 
 

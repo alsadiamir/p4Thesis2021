@@ -16,6 +16,21 @@ typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
 typedef bit<32> ip4Addr_t;
 
+struct queueing_metadata_t {
+    bit<48> enq_timestamp;
+    bit<19> enq_qdepth;
+    bit<32> deq_timedelta;
+    bit<19> deq_qdepth;
+}
+
+header queueing_metadata_t_padded {
+    bit<48> enq_timestamp;
+    bit<19> enq_qdepth;
+    bit<32> deq_timedelta;
+    bit<19> deq_qdepth;
+    bit<2>  pad;
+}
+
 header ethernet_t {
     macAddr_t dstAddr;
     macAddr_t srcAddr;
@@ -29,7 +44,7 @@ header myTunnel_t {
     bit<16> nhop;
     bit<48> ts_ing;
     bit<48> ts_eg;
-
+    bit<32> ts_deq;
 }
 
 header ipv4_t {
@@ -76,6 +91,8 @@ struct headers {
     ethernet_t   ethernet;
     myTunnel_t   myTunnel;
     ipv4_t       ipv4;
+    @name(".queueing_hdr")
+    queueing_metadata_t_padded queueing_hdr;
 }
 
 /*************************************************************************
@@ -102,6 +119,7 @@ parser MyParser(packet_in packet,
 
     state parse_myTunnel {
         packet.extract(hdr.myTunnel);
+        packet.extract(hdr.queueing_hdr);
         transition select(hdr.myTunnel.proto_id) {
             TYPE_IPV4: parse_ipv4;
             default: accept;
@@ -131,11 +149,10 @@ control MyVerifyChecksum(inout headers hdr, inout metadata meta) {
 control MyIngress(inout headers hdr,
                   inout metadata meta,
                   inout standard_metadata_t standard_metadata) {
+
     action drop() {
         mark_to_drop(standard_metadata);
     }
-
-    //register<bit<48>>(1024) links_cap;
 
     action ipv4_forward(macAddr_t dstAddr, egressSpec_t port) {
         standard_metadata.egress_spec = port;
@@ -178,15 +195,9 @@ control MyIngress(inout headers hdr,
             // Process only non-tunneled IPv4 packets
             ipv4_lpm.apply();
         }else if (hdr.myTunnel.isValid()) {
-
-            if (hdr.myTunnel.flag_s == 1 && hdr.myTunnel.nhop == 0) {
-                hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1;
-            }
             myTunnel_exact.apply();
         }
     }
-
-    //apply{}
 }
 
 /*************************************************************************
@@ -196,20 +207,40 @@ control MyIngress(inout headers hdr,
 control MyEgress(inout headers hdr,
                  inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
+     action copy_queueing_data() {
+         hdr.queueing_hdr.setValid();
+         hdr.queueing_hdr.enq_timestamp = (bit<48>)standard_metadata.enq_timestamp;
+         hdr.queueing_hdr.enq_qdepth = standard_metadata.enq_qdepth;
+         hdr.queueing_hdr.deq_timedelta = standard_metadata.deq_timedelta;
+         hdr.queueing_hdr.deq_qdepth = standard_metadata.deq_qdepth;
+         hdr.queueing_hdr.pad = 2w0;
+     }
 
      apply {
+         copy_queueing_data();
          if (hdr.myTunnel.isValid()) {
-             if (hdr.myTunnel.flag_s == 0 && hdr.myTunnel.nhop == 0) {
-                 // process s1 packets
-                 hdr.myTunnel.ts_ing = standard_metadata.ingress_global_timestamp;
-                 hdr.myTunnel.ts_eg = standard_metadata.egress_global_timestamp;
-                 hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1;
-             }
              if (hdr.myTunnel.flag_s == 1 && hdr.myTunnel.nhop == 1) {
-                 // process s2 packets
-                 hdr.myTunnel.ts_ing = standard_metadata.ingress_global_timestamp;
-                 hdr.myTunnel.ts_eg = standard_metadata.egress_global_timestamp;
+                 // process s1 packets
+                 if (hdr.myTunnel.nhop == 1) hdr.myTunnel.ts_ing = standard_metadata.ingress_global_timestamp;
+                 if (hdr.myTunnel.nhop == 2) hdr.myTunnel.ts_eg = standard_metadata.egress_global_timestamp;
+/*
+                 if(hdr.queueing_hdr.isValid()){
+                    hdr.myTunnel.ts_deq = hdr.queueing_hdr.deq_timedelta;
+                 }
+*/
              }
+             if (hdr.myTunnel.flag_s == 2 ) {
+                 // process s2 packets
+                 if (hdr.myTunnel.nhop == 1) hdr.myTunnel.ts_eg = standard_metadata.egress_global_timestamp;
+                 if (hdr.myTunnel.nhop == 2) hdr.myTunnel.ts_ing = standard_metadata.ingress_global_timestamp;
+/*
+                 if(hdr.queueing_hdr.isValid()){
+                    hdr.myTunnel.ts_deq = hdr.queueing_hdr.deq_timedelta;
+                 }
+*/
+             }
+             hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1;
+             //myTunnel_exact.apply();
          }
      }
 }

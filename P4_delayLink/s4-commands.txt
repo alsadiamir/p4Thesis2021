@@ -1,0 +1,4 @@
+table_set_default ipv4_lpm drop
+table_add ipv4_lpm ipv4_forward 10.0.1.1/32 => 00:00:00:02:04:00 2
+table_set_default myTunnel_exact drop
+table_add myTunnel_exact myTunnel_forward 2 => 2

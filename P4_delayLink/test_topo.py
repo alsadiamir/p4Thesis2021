@@ -33,31 +33,29 @@ class SingleSwitchTopo(Topo):
         switch1 = self.addSwitch('s1', sw_path = sw_path, json_path = json_path, thrift_port = 9090,cls = P4Switch ,pcap_dump = pcap_dump)
         switch2 = self.addSwitch('s2', sw_path = sw_path, json_path = json_path, thrift_port = 9091,cls = P4Switch ,pcap_dump = pcap_dump)
         switch3 = self.addSwitch('s3', sw_path = sw_path, json_path = json_path, thrift_port = 9092,cls = P4Switch ,pcap_dump = pcap_dump)
+        switch4 = self.addSwitch('s4', sw_path = sw_path, json_path = json_path, thrift_port = 9093,cls = P4Switch ,pcap_dump = pcap_dump)
 
-        host1 = self.addHost('h1')
-        host2 = self.addHost('h2')
-        host3 = self.addHost('h3')
-        host4 = self.addHost('h4')
+        host1 = self.addHost('h1',ip='10.0.1.1')
+        #host2 = self.addHost('h2',ip='10.0.2.2')
+        #host3 = self.addHost('h3',ip='10.0.3.3')
+        host4 = self.addHost('h4',ip='10.0.4.4')
 
-#        self.addLink(host1, switch1, port1=0, port2=1, cls=TCLink, bw=100, delay="10ms")
-#        self.addLink(switch1, switch2, port1=2, port2=2, cls=TCLink, bw=100, delay="10ms")
-#        self.addLink(switch1, switch3, port1=3, port2=2, cls=TCLink, bw=100, delay="10ms")
-#        self.addLink(switch3, switch2, port1=3, port2=3, cls=TCLink, bw=100, delay="10ms")
-#        self.addLink(switch2, host2, port1=1, port2=0, cls=TCLink, bw=100, delay="10ms")
-#        self.addLink(switch3, host3, port1=1, port2=0, cls=TCLink, bw=100, delay="10ms")
-
-        self.addLink(host1, switch1, cls=TCLink, bw=100, delay="10ms")
-        self.addLink(host4, switch1, cls=TCLink, bw=100, delay="10ms")
-        self.addLink(switch1, switch2, cls=TCLink, bw=100, delay="10ms")
-        self.addLink(switch1, switch3, cls=TCLink, bw=100, delay="10ms")
-        self.addLink(switch3, switch2, cls=TCLink, bw=100, delay="10ms")
-        self.addLink(switch2, host2, cls=TCLink, bw=100, delay="10ms")
-        self.addLink(switch3, host3, cls=TCLink, bw=100, delay="10ms")
+        self.addLink(host1, switch1, port1=0,port2=1)
+        self.addLink(switch2, switch1, port1=2,port2=2)
+        self.addLink(switch3, switch2, port1=3,port2=3)
+        self.addLink(switch1, switch3, port1=3,port2=2)
+        self.addLink(switch2, switch4, port1=4,port2=2)
+        #self.addLink(host3, switch3, port1=1,port2=0)
+        self.addLink(switch3, switch4, port1=4,port2=3)
+        #self.addLink(host2, switch2, port1=0,port2=1)
+        self.addLink(host4, switch4, port1=0,port2=1)
 
 def main():
     topo = SingleSwitchTopo(args.behavioral_exe, args.json, args.thrift_port, args.pcap_dump)
     #controller1 = RemoteController('controller1', ip = '10.108.148.148')
-    net = Mininet(topo = topo, host = P4Host, link= TCLink, controller = None)
+    net = Mininet(topo=topo,
+                   host=P4Host, link=TCLink,
+                   autoStaticArp=True, controller = None)
     net.start()
 
     sleep(1)

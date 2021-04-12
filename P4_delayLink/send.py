@@ -36,7 +36,7 @@ def main():
     parser.add_argument('ip_addr', type=str, help="The destination IP address to use")
     parser.add_argument('message', type=str, help="The message to include in packet")
     parser.add_argument('--dst_id', type=int, default=None, help='The myTunnel dst_id to use, if unspecified then myTunnel header will not be included in packet')
-    parser.add_argument('--delay', type=int, default=None, help='delay between the two packages')
+    parser.add_argument('--delay', type=float, default=None, help='delay between the two packages')
 
     args = parser.parse_args()
 
@@ -46,15 +46,16 @@ def main():
 
     iface = get_if()
     pkt1 = 0
-    time.sleep(delay)
+    #time.sleep(delay)
 
     if (dst_id is not None):
         print "sending first packet on interface {} to dst_id {}".format(iface, str(dst_id))
         pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
-        pkt = pkt / MyTunnel(dst_id=dst_id, flag_s=0) / IP(dst=addr) / args.message
+        pkt = pkt / MyTunnel(dst_id=dst_id, flag_s=2) / IP(dst = addr) / args.message
+        #print "LEN = " + str(len(pkt))
         print "sending second packet on interface {} to dst_id {}".format(iface, str(dst_id))
         pkt1 =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
-        pkt1 = pkt1 / MyTunnel(dst_id=dst_id, flag_s=1) / IP(dst=addr) / args.message
+        pkt1 = pkt1 / MyTunnel(dst_id=dst_id, flag_s=1) / IP(dst = addr) / args.message
 
     else:
         print "sending on interface {} to IP addr {}".format(iface, str(addr))
@@ -62,15 +63,13 @@ def main():
         pkt = pkt / IP(dst=addr) / TCP(dport=1234, sport=random.randint(49152,65535)) / args.message
 
     pkt.show2()
-#    hexdump(pkt)
-#    print "len(pkt) = ", len(pkt)
+
     sendp(pkt, iface=iface, verbose=False)
 
-    print "dl : " + str(delay);
-
-    if(pkt1 != 0):
-        pkt1.show2()
-        sendp(pkt1, iface=iface, verbose=False)
+    #print "dl : " + str(delay);
+    time.sleep(delay)
+    sendp(pkt1, iface=iface, verbose=False)
+    pkt1.show2()
 
 
 if __name__ == '__main__':

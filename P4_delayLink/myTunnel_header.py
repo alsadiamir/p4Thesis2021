@@ -13,7 +13,8 @@ class MyTunnel(Packet):
         ShortField("flag_s", 0), #Flag to assign the switch
         ShortField("nhop", 0), #Flag to track the packet route
         BitField("ts_ing",0,48), #timestamp of ingress queue
-        BitField("ts_eg",0,48)]  #timestamp of egress queue
+        BitField("ts_eg",0,48),
+        BitField("ts_deq",0,32)]  #timestamp of egress queue
 
 
 bind_layers(Ether, MyTunnel, type=TYPE_MYTUNNEL)
