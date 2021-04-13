@@ -10,11 +10,13 @@ class MyTunnel(Packet):
     fields_desc = [
         ShortField("pid", 0), #Protocol ID
         ShortField("dst_id", 0), #Destination Port
-        ShortField("flag_s", 0), #Flag to assign the switch
         ShortField("nhop", 0), #Flag to track the packet route
-        BitField("ts_ing",0,48), #timestamp of ingress queue
-        BitField("ts_eg",0,48),
-        BitField("ts_deq",0,32)]  #timestamp of egress queue
+        BitField("ts_ing1",0,48), #timestamp of ingress1 queue
+        BitField("ts_eg1",0,48),  #timestamp of egress1 queue
+        BitField("ts_is2",0,48), #timestamp of ingress1 queue
+        BitField("ts_es2",0,48),  #timestamp of egress1 queue
+        BitField("ts_ing2",0,48), #timestamp of ingress2 queue
+        BitField("ts_eg2",0,48)] #timestamp of egress2 queue
 
 
 bind_layers(Ether, MyTunnel, type=TYPE_MYTUNNEL)

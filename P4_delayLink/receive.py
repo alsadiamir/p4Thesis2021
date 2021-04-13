@@ -13,8 +13,7 @@ from scapy.layers.inet import _IPOption_HDR
 sys.path.append(".")
 from myTunnel_header import MyTunnel
 
-filenameS1 = "dataS1_30ms_withtraffic.csv"
-filenameS2 = "dataS2_30ms_withtraffic.csv"
+filenameS1 = "data_50ms_br.csv"
 
 def get_if():
     ifs=get_if_list()
@@ -32,18 +31,23 @@ def handle_pkt(pkt):
     if MyTunnel in pkt:
         print "got a packet"
         pkt.show2()
-        if (pkt.ts_ing > 0) and (pkt.ts_eg > 0):
-            if pkt.flag_s == 1 :
-                f = open(filenameS1,"a")
-            if pkt.flag_s == 2 :
-                f = open(filenameS2,"a")
 
-            f.write(str(pkt.ts_ing))
+        if (pkt.ts_ing1 > 0) and (pkt.ts_eg1 > 0) and (pkt.ts_is2 > 0) and (pkt.ts_es2 > 0) and (pkt.ts_ing2 > 0) and (pkt.ts_eg2 > 0):
+            f = open(filenameS1,"a")
+            f.write(str(pkt.ts_ing1))
             f.write(",")
-            f.write(str(pkt.ts_eg))
+            f.write(str(pkt.ts_eg1))
+            f.write(",")
+            f.write(str(pkt.ts_is2))
+            f.write(",")
+            f.write(str(pkt.ts_es2))
+            f.write(",")
+            f.write(str(pkt.ts_ing2))
+            f.write(",")
+            f.write(str(pkt.ts_eg2))
             f.write("\n")
             f.close()
-        sys.stdout.flush()
+            sys.stdout.flush()
 
 
 

@@ -40,11 +40,13 @@ header ethernet_t {
 header myTunnel_t {
     bit<16> proto_id;
     bit<16> dst_id;
-    bit<16> flag_s;
     bit<16> nhop;
-    bit<48> ts_ing;
-    bit<48> ts_eg;
-    bit<32> ts_deq;
+    bit<48> ts_ing1;
+    bit<48> ts_eg1;
+    bit<48> ts_is2;
+    bit<48> ts_es2;
+    bit<48> ts_ing2;
+    bit<48> ts_eg2;
 }
 
 header ipv4_t {
@@ -176,6 +178,7 @@ control MyIngress(inout headers hdr,
 
     action myTunnel_forward(egressSpec_t port) {
       standard_metadata.egress_spec = port;
+      hdr.myTunnel.dst_id = (bit<16>)port;
     }
 
     table myTunnel_exact {
@@ -195,6 +198,7 @@ control MyIngress(inout headers hdr,
             // Process only non-tunneled IPv4 packets
             ipv4_lpm.apply();
         }else if (hdr.myTunnel.isValid()) {
+            hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1;
             myTunnel_exact.apply();
         }
     }
@@ -217,30 +221,22 @@ control MyEgress(inout headers hdr,
      }
 
      apply {
-         copy_queueing_data();
+         //copy_queueing_data();
          if (hdr.myTunnel.isValid()) {
-             if (hdr.myTunnel.flag_s == 1 && hdr.myTunnel.nhop == 1) {
-                 // process s1 packets
-                 if (hdr.myTunnel.nhop == 1) hdr.myTunnel.ts_ing = standard_metadata.ingress_global_timestamp;
-                 if (hdr.myTunnel.nhop == 2) hdr.myTunnel.ts_eg = standard_metadata.egress_global_timestamp;
-/*
-                 if(hdr.queueing_hdr.isValid()){
-                    hdr.myTunnel.ts_deq = hdr.queueing_hdr.deq_timedelta;
+             if (hdr.myTunnel.nhop >= 2) {
+                 if (hdr.myTunnel.nhop == 2) {
+                      hdr.myTunnel.ts_ing1 = standard_metadata.ingress_global_timestamp;
+                      hdr.myTunnel.ts_eg1 = standard_metadata.egress_global_timestamp;
                  }
-*/
-             }
-             if (hdr.myTunnel.flag_s == 2 ) {
-                 // process s2 packets
-                 if (hdr.myTunnel.nhop == 1) hdr.myTunnel.ts_eg = standard_metadata.egress_global_timestamp;
-                 if (hdr.myTunnel.nhop == 2) hdr.myTunnel.ts_ing = standard_metadata.ingress_global_timestamp;
-/*
-                 if(hdr.queueing_hdr.isValid()){
-                    hdr.myTunnel.ts_deq = hdr.queueing_hdr.deq_timedelta;
+                 if (hdr.myTunnel.nhop == 3) {
+                      hdr.myTunnel.ts_is2 = standard_metadata.ingress_global_timestamp;
+                      hdr.myTunnel.ts_es2 = standard_metadata.egress_global_timestamp;
                  }
-*/
+                 if (hdr.myTunnel.nhop == 4) {
+                      hdr.myTunnel.ts_ing2 = standard_metadata.ingress_global_timestamp;
+                      hdr.myTunnel.ts_eg2 = standard_metadata.egress_global_timestamp;
+                 }
              }
-             hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1;
-             //myTunnel_exact.apply();
          }
      }
 }

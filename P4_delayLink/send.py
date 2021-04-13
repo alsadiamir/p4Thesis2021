@@ -51,11 +51,7 @@ def main():
     if (dst_id is not None):
         print "sending first packet on interface {} to dst_id {}".format(iface, str(dst_id))
         pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
-        pkt = pkt / MyTunnel(dst_id=dst_id, flag_s=2) / IP(dst = addr) / args.message
-        #print "LEN = " + str(len(pkt))
-        print "sending second packet on interface {} to dst_id {}".format(iface, str(dst_id))
-        pkt1 =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
-        pkt1 = pkt1 / MyTunnel(dst_id=dst_id, flag_s=1) / IP(dst = addr) / args.message
+        pkt = pkt / MyTunnel(dst_id=dst_id) / IP(dst = addr) / args.message
 
     else:
         print "sending on interface {} to IP addr {}".format(iface, str(addr))
@@ -66,10 +62,7 @@ def main():
 
     sendp(pkt, iface=iface, verbose=False)
 
-    #print "dl : " + str(delay);
-    time.sleep(delay)
-    sendp(pkt1, iface=iface, verbose=False)
-    pkt1.show2()
+    #pkt1.show2()
 
 
 if __name__ == '__main__':
