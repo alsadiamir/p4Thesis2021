@@ -2,6 +2,7 @@
 import sys
 import struct
 import os
+import argparse
 from datetime import datetime
 
 from scapy.all import sniff, sendp, hexdump, get_if_list, get_if_hwaddr
@@ -13,7 +14,11 @@ from scapy.layers.inet import _IPOption_HDR
 sys.path.append(".")
 from myTunnel_header import MyTunnel
 
-filenameS1 = "data_50ms_br.csv"
+parser = argparse.ArgumentParser()
+parser.add_argument('-f', type=str, help='The file in which entries are saved - line format is (6 entries): ts_ingress_rs1_1,ts_egress_rs1_1,ts_ingress_rs2,ts_egress_rs2,ts_ingress_rs1_2,ts_egress_rs1_2')
+args = parser.parse_args()
+
+filenameS1 = args.f
 
 def get_if():
     ifs=get_if_list()
