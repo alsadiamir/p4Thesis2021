@@ -24,3 +24,8 @@
 | <img src="/misc/img/P4img-test_TTL.png" alt="mdl.png" style="zoom:30%;"/> | A 2 hosts, 2 switch network that calculates OWD using a TTL-based-looping method.|
 |   [**OpenNetMon**](./test_algorithms/OpenNetMon/) |                **Description**                                 | 
 | <img src="/misc/img/P4img-test_CLL.png" alt="onm.png" style="zoom:30%;"/> | A 4 hosts, 2 switch network that calculates OWD using a OpenNetMon method.|
+
+**OWD delay link**
+|   [**Our OWD delay link**](./P4_delayLink/) |                         Description                          |  
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="/misc/img/P4img-Test_delayLink.png" alt="dl.png" style="zoom:30%;"/> | A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.|
