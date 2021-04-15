@@ -1,16 +1,6 @@
-# Delay Link Testing
+## OWD delay link
 
-## Introduction
+A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.
 
-
-![topology](./topo.png)
-
-
-### check delay link between two switches 
-
-test1 : addr 10.0.1.1
-	dst_id 3
-	flag_3 2
-
-
+<img src="/misc/img/P4img-Test_delayLink.png" alt="dl.png" style="zoom:30%;"/> 
 
