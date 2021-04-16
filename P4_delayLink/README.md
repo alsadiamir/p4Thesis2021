@@ -22,7 +22,9 @@ Then, the OWD is obtained by subtracting the **red** path from the RTT and by ha
 
 ## Test results
 Every test is simulated through the use of **linux traffic control (tc)** with the help of a simulated Mininet network. The test results are divided in 2 cases: normal and good case.
-The error is the **relative error** and is calculated as follows: RE =((average value of delay measured - delay)/delay)x100
+The error is the **relative error** and is calculated as follows: 
+
+__RE =((average value of delay measured - delay)/delay)x100__
 |   **delay(ms)**|                         **Normal case**                         |                         **Good case**                         |  
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | 10 | 5.22% | 1.70% | 
