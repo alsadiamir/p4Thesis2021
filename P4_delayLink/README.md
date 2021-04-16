@@ -2,7 +2,7 @@
 A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.
 <img src="/misc/img/P4img-Test_delayLink.png" alt="dl.png" style="height=70%"/> 
 
-# How to calculate OWD
+## How to calculate OWD
 Every test file is formatted as follows:
 
 timestamp ingress switch 1 first time, timestamp egress switch 1 first time, timestamp ingress switch 2, timestamp egress switch 2, timestamp ingress switch 1 second time, timestamp egress switch 1 second time.
