@@ -1,6 +1,6 @@
 ## OWD delay link
 A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.
-<img src="/misc/img/P4img-Test_delayLink.png" alt="dl.png" style="zoom:30%;"/> 
+<img src="/misc/img/P4img-Test_delayLink.png" alt="dl.png"/> 
 
 ## How to calculate OWD
 Every test file is formatted as follows:
