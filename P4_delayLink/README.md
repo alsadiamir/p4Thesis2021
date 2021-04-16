@@ -19,3 +19,9 @@ Then, the OWD is obtained by subtracting the **red** path from the RTT and by ha
 **RS2(time spent in the second switch) = timestamp egress switch 2 - timestamp ingress switch 2**
 
 **OWD = RTT - (RS1 + RS2)**
+
+## Test results
+Every test is simulated through the use of **linux traffic control (tc)** with the help of a simulated Mininet network. The test results are divided in 2 cases: normal and good case.
+|   **delay(ms)**|                         **Normal case**                         |                         **Good case**                         |  
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| 10 | 5.2% | 1.7% | 
