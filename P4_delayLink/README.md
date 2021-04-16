@@ -17,8 +17,8 @@ In figure, the RTT is equals to the sum of the **red** and **purple** paths. It 
 
 Then, the OWD is obtained by subtracting the **red** path from the RTT and by halving the result. We simply calculate a bunch of values to start with.
 
-RS1(time spent in the first switch) = (timestamp egress switch 1 first time - timestamp ingress switch 1 first time) + (timestamp egress switch 1 second time - timestamp ingress switch 1 second time)
+**RS1(time spent in the first switch) = (timestamp egress switch 1 first time - timestamp ingress switch 1 first time) + (timestamp egress switch 1 second time - timestamp ingress switch 1 second time)**
 
-RS2(time spent in the second switch) = timestamp egress switch 2 - timestamp ingress switch 2
+**RS2(time spent in the second switch) = timestamp egress switch 2 - timestamp ingress switch 2**
 
-OWD = RTT - (RS1 + RS2)
+**OWD = RTT - (RS1 + RS2)**
