@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.10">
+<file name="/mvn-src/src/main/java/org/foo/app/AppUiComponent.java">
+</file>
+<file name="/mvn-src/src/main/java/org/foo/app/AppWebApplication.java">
+</file>
+<file name="/mvn-src/src/main/java/org/foo/app/AppUiMessageHandler.java">
+</file>
+<file name="/mvn-src/src/main/java/org/foo/app/AppWebResource.java">
+</file>
+<file name="/mvn-src/src/main/java/org/foo/app/package-info.java">
+</file>
+<file name="/mvn-src/src/main/java/org/foo/app/SomeInterface.java">
+</file>
+<file name="/mvn-src/src/main/java/org/foo/app/AppComponent.java">
+</file>
+<file name="/mvn-src/target/generated-sources/org/foo/app/ApiDocRegistrator.java">
+</file>
+<file name="/mvn-src/src/test/java/org/foo/app/AppComponentTest.java">
+</file>
+</checkstyle>

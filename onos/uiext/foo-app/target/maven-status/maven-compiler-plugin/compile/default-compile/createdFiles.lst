@@ -1,0 +1,9 @@
+org/foo/app/AppUiMessageHandler.class
+org/foo/app/AppWebResource.class
+org/foo/app/AppComponent.class
+org/foo/app/AppUiMessageHandler$SampleCustomDataRequestHandler.class
+org/foo/app/AppUiComponent.class
+org/foo/app/AppUiMessageHandler$EraseRequestHandler.class
+org/foo/app/ApiDocRegistrator.class
+org/foo/app/AppWebApplication.class
+org/foo/app/SomeInterface.class

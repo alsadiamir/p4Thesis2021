@@ -1,0 +1,8 @@
+/mvn-src/src/main/java/org/foo/app/AppWebApplication.java
+/mvn-src/src/main/java/org/foo/app/AppWebResource.java
+/mvn-src/src/main/java/org/foo/app/SomeInterface.java
+/mvn-src/src/main/java/org/foo/app/AppComponent.java
+/mvn-src/src/main/java/org/foo/app/AppUiMessageHandler.java
+/mvn-src/src/main/java/org/foo/app/AppUiComponent.java
+/mvn-src/src/main/java/org/foo/app/package-info.java
+/mvn-src/target/generated-sources/org/foo/app/ApiDocRegistrator.java
