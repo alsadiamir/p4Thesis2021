@@ -33,4 +33,4 @@
 **OWD delay link**
 |   [**ONOS integration with OWD delay link**](./onos/) |                         Description                          |  
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="/misc/img/ONOS.png" alt="dl.png" style="zoom:30%;"/> | 2 application that setup the reception of OWD packets and the UI extension.|
+| <img src="/misc/img/ONOS.png" alt="dl.png" style="zoom:50%;"/> | 2 applications that setup the reception of OWD packets and the UI extension.|
