@@ -29,3 +29,8 @@
 |   [**Our OWD delay link**](./P4_delayLink/) |                         Description                          |  
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="/misc/img/P4img-Test_delayLink.png" alt="dl.png" style="zoom:30%;"/> | A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.|
+
+**OWD delay link**
+|   [**ONOS integration with OWD delay link**](./onos/) |                         Description                          |  
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="/misc/img/ONOS.png" alt="dl.png" style="zoom:30%;"/> | A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.|
