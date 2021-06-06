@@ -1,0 +1,252 @@
+pkg_info {
+  arch: "v1model"
+}
+tables {
+  preamble {
+    id: 33574068
+    name: "MyIngress.ipv4_lpm"
+    alias: "ipv4_lpm"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.dstAddr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16799317
+  }
+  action_refs {
+    id: 16805608
+  }
+  action_refs {
+    id: 16800567
+  }
+  direct_resource_ids: 318800753
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33568551
+    name: "MyIngress.myTunnel_exact"
+    alias: "myTunnel_exact"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.myTunnel.dst_id"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16837959
+  }
+  action_refs {
+    id: 16805608
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  direct_resource_ids: 318781057
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33575970
+    name: "MyIngress.acl_table"
+    alias: "acl_table"
+  }
+  match_fields {
+    id: 1
+    name: "standard_metadata.ingress_port"
+    bitwidth: 9
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 2
+    name: "hdr.ethernet.dstAddr"
+    bitwidth: 48
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 3
+    name: "hdr.ethernet.srcAddr"
+    bitwidth: 48
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 4
+    name: "hdr.ethernet.etherType"
+    bitwidth: 16
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 5
+    name: "meta.ip_proto"
+    bitwidth: 8
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 6
+    name: "meta.icmp_type"
+    bitwidth: 8
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 7
+    name: "meta.l4_src_port"
+    bitwidth: 16
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 8
+    name: "meta.l4_dst_port"
+    bitwidth: 16
+    match_type: TERNARY
+  }
+  action_refs {
+    id: 16791698
+  }
+  action_refs {
+    id: 16836171
+  }
+  action_refs {
+    id: 16805608
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  direct_resource_ids: 318773822
+  size: 1024
+}
+actions {
+  preamble {
+    id: 16800567
+    name: "NoAction"
+    alias: "NoAction"
+  }
+}
+actions {
+  preamble {
+    id: 16805608
+    name: "MyIngress.drop"
+    alias: "drop"
+  }
+}
+actions {
+  preamble {
+    id: 16799317
+    name: "MyIngress.ipv4_forward"
+    alias: "ipv4_forward"
+  }
+  params {
+    id: 1
+    name: "dstAddr"
+    bitwidth: 48
+  }
+  params {
+    id: 2
+    name: "port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16837959
+    name: "MyIngress.myTunnel_forward"
+    alias: "myTunnel_forward"
+  }
+  params {
+    id: 1
+    name: "port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16791698
+    name: "MyIngress.send_to_cpu"
+    alias: "send_to_cpu"
+  }
+}
+actions {
+  preamble {
+    id: 16836171
+    name: "MyIngress.clone_to_cpu"
+    alias: "clone_to_cpu"
+  }
+}
+direct_counters {
+  preamble {
+    id: 318800753
+    name: "ipv4_lpm_counter"
+    alias: "ipv4_lpm_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 33574068
+}
+direct_counters {
+  preamble {
+    id: 318781057
+    name: "myTunnel_exact_table_counter"
+    alias: "myTunnel_exact_table_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 33568551
+}
+direct_counters {
+  preamble {
+    id: 318773822
+    name: "acl_table_counter"
+    alias: "acl_table_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 33575970
+}
+controller_packet_metadata {
+  preamble {
+    id: 67132047
+    name: "packet_in"
+    alias: "packet_in"
+    annotations: "@controller_header(\"packet_in\")"
+  }
+  metadata {
+    id: 1
+    name: "ingress_port"
+    bitwidth: 9
+  }
+  metadata {
+    id: 2
+    name: "_pad"
+    bitwidth: 7
+  }
+}
+controller_packet_metadata {
+  preamble {
+    id: 67111875
+    name: "packet_out"
+    alias: "packet_out"
+    annotations: "@controller_header(\"packet_out\")"
+  }
+  metadata {
+    id: 1
+    name: "egress_port"
+    bitwidth: 9
+  }
+  metadata {
+    id: 2
+    name: "_pad"
+    bitwidth: 7
+  }
+}
+type_info {
+}

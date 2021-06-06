@@ -1,0 +1,24 @@
+Insert the following in p4 runtime shell:
+te = table_entry["IngressPipeImpl.l2_exact_table"](action="IngressPipeImpl.set_egress_port")
+te.match["hdr.ethernet.dst_addr"] = ("00:00:00:00:00:1B")
+te.action["port_num"] = ("4")
+te.insert()
+te.match["hdr.ethernet.dst_addr"] = ("00:00:00:00:00:1A")
+te.action["port_num"] = ("3") 
+te.insert()
+
+header ipv4_t {
+    bit<4>   version;
+    bit<4>   ihl;
+    bit<6>   dscp;
+    bit<2>   ecn;
+    bit<16>  total_len;
+    bit<16>  identification;
+    bit<3>   flags;
+    bit<13>  frag_offset;
+    bit<8>   ttl;
+    bit<8>   protocol;
+    bit<16>  hdr_checksum;
+    bit<32>  src_addr;
+    bit<32>  dst_addr;
+}

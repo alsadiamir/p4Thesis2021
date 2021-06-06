@@ -1,0 +1,31 @@
+{
+  "flows": [
+    {
+      "deviceId": "device:spine2",
+      "tableId": "IngressPipeImpl.myTunnel_exact",
+      "priority": 10,
+      "timeout": 0,
+      "isPermanent": true,
+      "selector": {
+        "criteria": [
+          {
+            "type": "IN_PORT",
+            "port": "2"
+          }
+        ]
+      },
+      "treatment": {
+        "instructions": [
+          {
+            "type": "PROTOCOL_INDEPENDENT",
+            "subtype": "ACTION",
+            "actionId": "IngressPipeImpl.myTunnel_forward",
+            "actionParams": {
+              "port": "1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

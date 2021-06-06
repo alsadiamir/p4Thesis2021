@@ -1,0 +1,12 @@
+E0511 09:55:23.129848    73 main.cc:121] Starting bmv2 simple_switch and waiting for P4 pipeline
+[09:55:23.132] [bmv2] [D] [thread 73] Set default default entry for table 't_drop': a_drop - 
+[09:55:23.138] [bmv2] [D] [thread 73] Adding interface veth0 as port 1
+[09:55:23.191] [bmv2] [D] [thread 73] Adding interface veth2 as port 2
+[09:55:23.259] [bmv2] [D] [thread 73] Adding interface veth4 as port 3
+[09:55:23.347] [bmv2] [D] [thread 73] Adding interface veth6 as port 4
+[09:55:23.423] [bmv2] [D] [thread 73] Adding interface veth8 as port 5
+[09:55:23.483] [bmv2] [D] [thread 73] Adding interface veth10 as port 6
+[09:55:23.534] [bmv2] [D] [thread 73] Adding interface veth12 as port 7
+[09:55:23.591] [bmv2] [D] [thread 73] Adding interface veth14 as port 8
+E0511 09:55:23.671336077      73 server_chttp2.cc:40]        {"created":"@1620726923.671278537","description":"Only 1 addresses added out of total 2 resolved","file":"external/com_github_grpc_grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc","file_line":406,"referenced_errors":[{"created":"@1620726923.671273511","description":"Address family not supported by protocol","errno":97,"file":"external/com_github_grpc_grpc/src/core/lib/iomgr/socket_utils_common_posix.cc","file_line":420,"os_error":"Address family not supported by protocol","syscall":"socket","target_address":"[::1]:28000"}]}
+E0511 09:55:23.671592    73 hal.cc:223] Stratum external facing services are listening to 0.0.0.0:28000, localhost:28000...

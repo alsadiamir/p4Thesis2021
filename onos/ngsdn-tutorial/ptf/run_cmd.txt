@@ -1,0 +1,8 @@
+./lib/runner.py \
+    --bmv2-json ../p4src/build/bmv2.json \
+    --p4info ../p4src/build/p4info.txt \
+    --grpc-addr localhost:50001 \
+    --device-id 1 \
+    --ptf-dir ./tests \
+    --cpu-port 255 \
+    --port-map ./lib/port_map_onos.json "${@}"
