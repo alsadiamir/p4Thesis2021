@@ -50,6 +50,11 @@ sudo python start_test_topo.py
 xterm h1 h4
 ```
 
+In the **second terminal** run the following commands, to install rules into the switches:
+```shell
+sudo python cmd_add.py
+```
+
 Then, in the **h4 terminal**, run the following command to start listening to TCP packets - you need to specify the file in which you want to save tests (-f option, csv file preferred)
 ```shell
 ./receive.py -f filename.csv
