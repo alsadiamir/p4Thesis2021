@@ -50,7 +50,7 @@ sudo python start_test_topo.py
 xterm h1 h4
 ```
 
-In the **first terminal** run the following commands, to install rules into the switches:
+In the **second terminal** run the following commands, to install rules into the switches:
 ```shell
 sudo python cmd_add.py
 ```
