@@ -54,7 +54,7 @@ In the **second terminal** run the following commands, to install rules into the
 sudo python cmd_add.py
 ```
 
-Then, in the **h4 terminal**, run the following command to start listening to TCP packets - you need to specify the file in which you want to save tests (-f option, csv file preferred)
+Then, in the **h2 terminal**, run the following command to start listening to TCP packets - you need to specify the file in which you want to save tests (-f option, csv file preferred)
 ```shell
 ./receive.py -f filename.csv
 ```
@@ -65,7 +65,7 @@ Then, in the **h1 terminal**, run the following command to send 5 packets:
 ```
 
 ### Calculating the OWD
-Run the following to calculate OWD, you will see RS1 and RS2 calculation, as well as RTT - you need to specify the file from which you want to calculate OWD (-f option, format specified above):
+Run the following to calculate OWD - you need to specify the file from which you want to calculate OWD (-f option, format specified above):
 ```shell
 ./calculate_OWD.py -f filename
 ```
