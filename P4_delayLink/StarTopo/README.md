@@ -14,7 +14,7 @@ The OWD is calculated by subtracting from the RTT the delay introduced my the sw
 
 Legend: RSij, where i=# of the switch and j=the times the packet crossed the switch.
 
-**OWD = ( RTT - (RS11 + RS21 + RS31 + RS4 + RS32 + RS22 + RS12) ) / 2**
+**OWD = ( RTT - (RS11 + RS21 + RS51 + RS31 + RS4 + RS32 + RS52 + RS22 + RS12) ) / 2**
 
 ## Test results
 Every test is simulated through the use of **linux traffic control (tc)** with the help of a simulated Mininet network. The test results are divided in 2 cases: normal and good case.
