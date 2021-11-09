@@ -1,4 +1,4 @@
-# OWD delay link
+# Star topology 5 hops delay link
 A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.
 <img src="/misc/img/publication-StarTopo.png" alt="star.png" style="height=70%"/> 
 
