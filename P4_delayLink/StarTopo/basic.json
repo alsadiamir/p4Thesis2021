@@ -1,0 +1,1859 @@
+{
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : [
+        ["userMetadata._ingress_metadata_my_flowID0", 64, false],
+        ["userMetadata._ingress_metadata_my_estimated_count1", 64, false],
+        ["userMetadata._ingress_metadata_already_matched2", 1, false],
+        ["userMetadata._ingress_metadata_nhop_ipv43", 32, false],
+        ["userMetadata._ingress_metadata_carry_min4", 64, false],
+        ["userMetadata._ingress_metadata_carry_min_plus_one5", 64, false],
+        ["userMetadata._ingress_metadata_min_stage6", 8, false],
+        ["userMetadata._ingress_metadata_do_recirculate7", 1, false],
+        ["userMetadata._ingress_metadata_orig_egr_port8", 9, false],
+        ["userMetadata._ingress_metadata_hashed_first9", 32, false],
+        ["userMetadata._ingress_metadata_hashed_second10", 32, false],
+        ["userMetadata._ingress_metadata_hashed_address_s311", 32, false],
+        ["userMetadata._ingress_metadata_random_bits12", 64, false],
+        ["userMetadata._ingress_metadata_random_bits_short13", 12, false],
+        ["_padding_0", 1, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["egress_spec", 9, false],
+        ["egress_port", 9, false],
+        ["instance_type", 32, false],
+        ["packet_length", 32, false],
+        ["enq_timestamp", 32, false],
+        ["enq_qdepth", 19, false],
+        ["deq_timedelta", 32, false],
+        ["deq_qdepth", 19, false],
+        ["ingress_global_timestamp", 48, false],
+        ["egress_global_timestamp", 48, false],
+        ["mcast_grp", 16, false],
+        ["egress_rid", 16, false],
+        ["checksum_error", 1, false],
+        ["parser_error", 32, false],
+        ["priority", 3, false],
+        ["_padding", 3, false]
+      ]
+    },
+    {
+      "name" : "ethernet_t",
+      "id" : 2,
+      "fields" : [
+        ["dstAddr", 48, false],
+        ["srcAddr", 48, false],
+        ["etherType", 16, false]
+      ]
+    },
+    {
+      "name" : "myTunnel_t",
+      "id" : 3,
+      "fields" : [
+        ["proto_id", 16, false],
+        ["dst_id", 16, false],
+        ["nhop", 16, false],
+        ["s11i", 48, false],
+        ["s11e", 48, false],
+        ["s21i", 48, false],
+        ["s21e", 48, false],
+        ["s51i", 48, false],
+        ["s51e", 48, false],
+        ["s31i", 48, false],
+        ["s31e", 48, false],
+        ["s4i", 48, false],
+        ["s4e", 48, false],
+        ["s32i", 48, false],
+        ["s32e", 48, false],
+        ["s52i", 48, false],
+        ["s52e", 48, false],
+        ["s22i", 48, false],
+        ["s22e", 48, false],
+        ["s12i", 48, false],
+        ["s12e", 48, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 4,
+      "fields" : [
+        ["version", 4, false],
+        ["ihl", 4, false],
+        ["diffserv", 8, false],
+        ["totalLen", 16, false],
+        ["identification", 16, false],
+        ["flags", 3, false],
+        ["fragOffset", 13, false],
+        ["ttl", 8, false],
+        ["protocol", 8, false],
+        ["hdrChecksum", 16, false],
+        ["srcAddr", 32, false],
+        ["dstAddr", 32, false]
+      ]
+    },
+    {
+      "name" : "queueing_metadata_t_padded",
+      "id" : 5,
+      "fields" : [
+        ["enq_timestamp", 48, false],
+        ["enq_qdepth", 19, false],
+        ["deq_timedelta", 32, false],
+        ["deq_qdepth", 19, false],
+        ["pad", 2, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ethernet",
+      "id" : 2,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "myTunnel",
+      "id" : 3,
+      "header_type" : "myTunnel_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 4,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "queueing_hdr",
+      "id" : 5,
+      "header_type" : "queueing_metadata_t_padded",
+      "metadata" : false,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 0],
+    ["PacketTooShort", 1],
+    ["NoMatch", 2],
+    ["StackOutOfBounds", 3],
+    ["HeaderTooShort", 4],
+    ["ParserTimeout", 5],
+    ["ParserInvalidArgument", 6]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ethernet"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x1212",
+              "mask" : null,
+              "next_state" : "parse_myTunnel"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "etherType"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_myTunnel",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "myTunnel"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "queueing_hdr"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "proto_id"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv4",
+          "id" : 2,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "basic.p4",
+        "line" : 298,
+        "column" : 8,
+        "source_fragment" : "MyDeparser"
+      },
+      "order" : ["ethernet", "myTunnel", "ipv4"],
+      "primitives" : []
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [],
+  "calculations" : [
+    {
+      "name" : "calc",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "basic.p4",
+        "line" : 276,
+        "column" : 1,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "algo" : "csum16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["ipv4", "version"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ihl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "diffserv"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "totalLen"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "identification"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "flags"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "fragOffset"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ttl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "protocol"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "srcAddr"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "dstAddr"]
+        }
+      ]
+    }
+  ],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyIngress.drop",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 168,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop(standard_metadata)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.drop",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 168,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop(standard_metadata)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.ipv4_forward",
+      "id" : 3,
+      "runtime_data" : [
+        {
+          "name" : "dstAddr",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 172,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "srcAddr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 173,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 174,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "ttl"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "ttl"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 175,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl - 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.myTunnel_forward",
+      "id" : 4,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 192,
+            "column" : 6,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "dst_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "?",
+                  "left" : {
+                    "type" : "hexstr",
+                    "value" : "0x0002"
+                  },
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["myTunnel", "dst_id"]
+                  },
+                  "cond" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "==",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["myTunnel", "nhop"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0005"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "basic215",
+      "id" : 5,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "nhop"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["myTunnel", "nhop"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0001"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 215,
+            "column" : 12,
+            "source_fragment" : "hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic231",
+      "id" : 6,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s11i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 231,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s11i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s11e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 232,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s11e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic235",
+      "id" : 7,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s21i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 235,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s21i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s21e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 236,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s21e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic239",
+      "id" : 8,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s51i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 239,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s51i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s51e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 240,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s51e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic243",
+      "id" : 9,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s31i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 243,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s31i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s31e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 244,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s31e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic247",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s4i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 247,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s4i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s4e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 248,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s4e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic251",
+      "id" : 11,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s32i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 251,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s32i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s32e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 252,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s32e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic255",
+      "id" : 12,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s52i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 255,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s52i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s52e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 256,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s52e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic259",
+      "id" : 13,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s22i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 259,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s22i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s22e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 260,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s22e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "basic263",
+      "id" : 14,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s12i"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 263,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s12i = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["myTunnel", "s12e"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 264,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.s12e = standard_metadata.egress_global_timestamp"
+          }
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "basic.p4",
+        "line" : 163,
+        "column" : 8,
+        "source_fragment" : "MyIngress"
+      },
+      "init_table" : "node_2",
+      "tables" : [
+        {
+          "name" : "MyIngress.ipv4_lpm",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 178,
+            "column" : 10,
+            "source_fragment" : "ipv4_lpm"
+          },
+          "key" : [
+            {
+              "match_type" : "lpm",
+              "name" : "hdr.ipv4.dstAddr",
+              "target" : ["ipv4", "dstAddr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "lpm",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [3, 1, 0],
+          "actions" : ["MyIngress.ipv4_forward", "MyIngress.drop", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.ipv4_forward" : null,
+            "MyIngress.drop" : null,
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_basic215",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 215,
+            "column" : 30,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5],
+          "actions" : ["basic215"],
+          "base_default_next" : "MyIngress.myTunnel_exact",
+          "next_tables" : {
+            "basic215" : "MyIngress.myTunnel_exact"
+          },
+          "default_entry" : {
+            "action_id" : 5,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyIngress.myTunnel_exact",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 198,
+            "column" : 10,
+            "source_fragment" : "myTunnel_exact"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.myTunnel.dst_id",
+              "target" : ["myTunnel", "dst_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [4, 2],
+          "actions" : ["MyIngress.myTunnel_forward", "MyIngress.drop"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.myTunnel_forward" : null,
+            "MyIngress.drop" : null
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_2",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 211,
+            "column" : 12,
+            "source_fragment" : "hdr.ipv4.isValid() && !hdr.myTunnel.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["ipv4", "$valid$"]
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "not",
+                  "left" : null,
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "d2b",
+                      "left" : null,
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["myTunnel", "$valid$"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "MyIngress.ipv4_lpm",
+          "false_next" : "node_4"
+        },
+        {
+          "name" : "node_4",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 214,
+            "column" : 18,
+            "source_fragment" : "hdr.myTunnel.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["myTunnel", "$valid$"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_basic215"
+        }
+      ]
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "basic.p4",
+        "line" : 225,
+        "column" : 8,
+        "source_fragment" : "MyEgress"
+      },
+      "init_table" : "node_9",
+      "tables" : [
+        {
+          "name" : "tbl_basic231",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 231,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6],
+          "actions" : ["basic231"],
+          "base_default_next" : "node_12",
+          "next_tables" : {
+            "basic231" : "node_12"
+          },
+          "default_entry" : {
+            "action_id" : 6,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic235",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 235,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [7],
+          "actions" : ["basic235"],
+          "base_default_next" : "node_14",
+          "next_tables" : {
+            "basic235" : "node_14"
+          },
+          "default_entry" : {
+            "action_id" : 7,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic239",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 239,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [8],
+          "actions" : ["basic239"],
+          "base_default_next" : "node_16",
+          "next_tables" : {
+            "basic239" : "node_16"
+          },
+          "default_entry" : {
+            "action_id" : 8,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic243",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 243,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [9],
+          "actions" : ["basic243"],
+          "base_default_next" : "node_18",
+          "next_tables" : {
+            "basic243" : "node_18"
+          },
+          "default_entry" : {
+            "action_id" : 9,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic247",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 247,
+            "column" : 37,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [10],
+          "actions" : ["basic247"],
+          "base_default_next" : "node_20",
+          "next_tables" : {
+            "basic247" : "node_20"
+          },
+          "default_entry" : {
+            "action_id" : 10,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic251",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 251,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [11],
+          "actions" : ["basic251"],
+          "base_default_next" : "node_22",
+          "next_tables" : {
+            "basic251" : "node_22"
+          },
+          "default_entry" : {
+            "action_id" : 11,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic255",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 255,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [12],
+          "actions" : ["basic255"],
+          "base_default_next" : "node_24",
+          "next_tables" : {
+            "basic255" : "node_24"
+          },
+          "default_entry" : {
+            "action_id" : 12,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic259",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 259,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [13],
+          "actions" : ["basic259"],
+          "base_default_next" : "node_26",
+          "next_tables" : {
+            "basic259" : "node_26"
+          },
+          "default_entry" : {
+            "action_id" : 13,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_basic263",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 263,
+            "column" : 38,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [14],
+          "actions" : ["basic263"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "basic263" : null
+          },
+          "default_entry" : {
+            "action_id" : 14,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_9",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 229,
+            "column" : 13,
+            "source_fragment" : "hdr.myTunnel.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["myTunnel", "$valid$"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "node_10"
+        },
+        {
+          "name" : "node_10",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 230,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0001"
+              }
+            }
+          },
+          "true_next" : "tbl_basic231",
+          "false_next" : "node_12"
+        },
+        {
+          "name" : "node_12",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 234,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 2"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0002"
+              }
+            }
+          },
+          "true_next" : "tbl_basic235",
+          "false_next" : "node_14"
+        },
+        {
+          "name" : "node_14",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 238,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 3"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0003"
+              }
+            }
+          },
+          "true_next" : "tbl_basic239",
+          "false_next" : "node_16"
+        },
+        {
+          "name" : "node_16",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 242,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 4"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0004"
+              }
+            }
+          },
+          "true_next" : "tbl_basic243",
+          "false_next" : "node_18"
+        },
+        {
+          "name" : "node_18",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 246,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 5"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0005"
+              }
+            }
+          },
+          "true_next" : "tbl_basic247",
+          "false_next" : "node_20"
+        },
+        {
+          "name" : "node_20",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 250,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 6"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0006"
+              }
+            }
+          },
+          "true_next" : "tbl_basic251",
+          "false_next" : "node_22"
+        },
+        {
+          "name" : "node_22",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 254,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 7"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0007"
+              }
+            }
+          },
+          "true_next" : "tbl_basic255",
+          "false_next" : "node_24"
+        },
+        {
+          "name" : "node_24",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 258,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 8"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0008"
+              }
+            }
+          },
+          "true_next" : "tbl_basic259",
+          "false_next" : "node_26"
+        },
+        {
+          "name" : "node_26",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 262,
+            "column" : 20,
+            "source_fragment" : "hdr.myTunnel.nhop == 9"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["myTunnel", "nhop"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0009"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_basic263"
+        }
+      ]
+    }
+  ],
+  "checksums" : [
+    {
+      "name" : "cksum",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "basic.p4",
+        "line" : 276,
+        "column" : 1,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "target" : ["ipv4", "hdrChecksum"],
+      "type" : "generic",
+      "calculation" : "calc",
+      "verify" : false,
+      "update" : true,
+      "if_cond" : {
+        "type" : "expression",
+        "value" : {
+          "op" : "d2b",
+          "left" : null,
+          "right" : {
+            "type" : "field",
+            "value" : ["ipv4", "$valid$"]
+          }
+        }
+      }
+    }
+  ],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : [
+    [
+      "queueing_metadata.enq_timestamp",
+      ["standard_metadata", "enq_timestamp"]
+    ],
+    [
+      "queueing_metadata.enq_qdepth",
+      ["standard_metadata", "enq_qdepth"]
+    ],
+    [
+      "queueing_metadata.deq_timedelta",
+      ["standard_metadata", "deq_timedelta"]
+    ],
+    [
+      "queueing_metadata.deq_qdepth",
+      ["standard_metadata", "deq_qdepth"]
+    ],
+    [
+      "intrinsic_metadata.ingress_global_timestamp",
+      ["standard_metadata", "ingress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.egress_global_timestamp",
+      ["standard_metadata", "egress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.mcast_grp",
+      ["standard_metadata", "mcast_grp"]
+    ],
+    [
+      "intrinsic_metadata.egress_rid",
+      ["standard_metadata", "egress_rid"]
+    ],
+    [
+      "intrinsic_metadata.priority",
+      ["standard_metadata", "priority"]
+    ]
+  ],
+  "program" : "basic.p4",
+  "__meta__" : {
+    "version" : [2, 23],
+    "compiler" : "https://github.com/p4lang/p4c"
+  }
+}
