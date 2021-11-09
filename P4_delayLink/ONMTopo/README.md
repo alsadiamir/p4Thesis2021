@@ -31,11 +31,14 @@ __RE =( (average value of delay measured - delay)/delay ) x 100__
 ## How to run a test
 First, set the Mininet delay value. 
 1 - Go on the file test_topo.py and edit it.
-2 - Go on line 45 and edit the value of delay in the line **self.addLink(switch2, switch3, port1=3,port2=3, delay="200ms")** - format are Xms, Xs, etc.. with X being the value of the delay
+2 - Go on line 43, 44 and 45 and edit the value of delay in the function **self.addLink** - format are Xms, Xs, etc.. with X being the value of the delay
 
 Then, open 2 terminals in P4_delayLink/.
 
 ### Collecting data
+
+**(Everything is written in python2!!)**
+
 In the **first terminal** run the following commands, to:
 1. generate a JSON file with the description of the basic.p4 rules
 2. start the topography described in test_topo.py
