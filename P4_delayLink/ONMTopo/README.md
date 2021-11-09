@@ -1,4 +1,4 @@
-# OWD delay link
+# ONM topology 4 hops delay link
 A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.
 <img src="/misc/img/publication-ONMTopo.png" alt="onm.png" style="height=70%"/> 
 
