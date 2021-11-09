@@ -8,7 +8,7 @@ Every test file is formatted as follows:
 <timestamp ingress switch 1 first time, timestamp egress switch 1 first time, timestamp ingress switch 2 first time, timestamp egress switch 2 first time, timestamp ingress switch 5 first time, timestamp egress switch 5 first time, timestamp ingress switch 3 first time, timestamp egress switch 3 first time, , timestamp ingress switch 4, timestamp egress switch 4, timestamp ingress switch 3 second time, timestamp egress switch 3 second time, timestamp ingress switch 5 second time, timestamp egress switch 5 second time, timestamp ingress switch 2 second time, timestamp egress switch 2 second time, timestamp ingress switch 1 second time, timestamp egress switch 1 second time>.
 
 ## RTT and OWD
-The RTT between 2 switches is calculated with the help of a probe. The probe is sent from h1 and goes through s1-s2-s3-s4 and back to s3-s2-s1 to h2 which receives it. This choice is due to the fact that it is always better to use the same clock to measure a delay. 
+The RTT between 2 switches is calculated with the help of a probe. The probe is sent from h1 and goes through s1-s2-s5-s3-s4 and back to s3-s5-s2-s1 to h2 which receives it. This choice is due to the fact that it is always better to use the same clock to measure a delay. 
 
 The OWD is calculated by subtracting from the RTT the delay introduced my the switches and halving the result. 
 
