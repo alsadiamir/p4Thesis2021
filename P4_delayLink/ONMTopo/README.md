@@ -8,11 +8,12 @@ Every test file is formatted as follows:
 <timestamp ingress switch 1 first time, timestamp egress switch 1 first time, timestamp ingress switch 2 first time, timestamp egress switch 2 first time, timestamp ingress switch 3 first time, timestamp egress switch 3 first time, , timestamp ingress switch 4, timestamp egress switch 4, timestamp ingress switch 3 second time, timestamp egress switch 3 second time, timestamp ingress switch 2 second time, timestamp egress switch 2 second time, timestamp ingress switch 1 second time, timestamp egress switch 1 second time>.
 
 ## RTT and OWD
-The RTT between 2 switches is calculated with the help of a probe. The probe goes through s1-s2-s3-s4 and back to s3-s2 and s1 again. This choice is due to the fact that it is always better to use the same clock to measure a delay. 
+The RTT between 2 switches is calculated with the help of a probe. The probe is sent from h1 and goes through s1-s2-s3-s4 and back to s3-s2-s1 to h2 which receives it. This choice is due to the fact that it is always better to use the same clock to measure a delay. 
 
 The OWD is calculated by subtracting from the RTT the delay introduced my the switches and halving the result. 
 
-Legend: RSij, where i=# of the switch and j=the times the packet crossed the switch
+Legend: RSij, where i=# of the switch and j=the times the packet crossed the switch.
+
 **OWD = ( RTT - (RS11 + RS21 + RS31 + RS4 + RS32 + RS22 + RS12) ) / 2**
 
 ## Test results
@@ -20,12 +21,12 @@ Every test is simulated through the use of **linux traffic control (tc)** with t
 The error is the **relative error** and is calculated as follows: 
 
 __RE =( (average value of delay measured - delay)/delay ) x 100__
-|   **delay(ms)**|                         **Normal case**                         |                         **Good case**                         |  
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| 10 | 5.22% | 1.70% | 
-| 50 | 6.38% | 0.31% | 
-| 100 | 5.75% | 0.53% | 
-| 200 | 0.36% | 0.31% | 
+|   **delay(ms)**|                         **Normal case**                         |  
+| :----------------------------------------------------------: | :----------------------------------------------------------: | 
+| 10 | 3.5% |
+| 50 | 1.1% | 
+| 100 | 0.60% | 
+| 200 | 0.26% |
 
 ## How to run a test
 First, set the Mininet delay value. 
