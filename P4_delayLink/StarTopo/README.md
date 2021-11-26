@@ -1,4 +1,4 @@
-# OWD delay link
+# Star topology 5 hops delay link
 A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.
 <img src="/misc/img/publication-StarTopo.png" alt="star.png" style="height=70%"/> 
 
@@ -8,13 +8,13 @@ Every test file is formatted as follows:
 <timestamp ingress switch 1 first time, timestamp egress switch 1 first time, timestamp ingress switch 2 first time, timestamp egress switch 2 first time, timestamp ingress switch 5 first time, timestamp egress switch 5 first time, timestamp ingress switch 3 first time, timestamp egress switch 3 first time, , timestamp ingress switch 4, timestamp egress switch 4, timestamp ingress switch 3 second time, timestamp egress switch 3 second time, timestamp ingress switch 5 second time, timestamp egress switch 5 second time, timestamp ingress switch 2 second time, timestamp egress switch 2 second time, timestamp ingress switch 1 second time, timestamp egress switch 1 second time>.
 
 ## RTT and OWD
-The RTT between 2 switches is calculated with the help of a probe. The probe is sent from h1 and goes through s1-s2-s3-s4 and back to s3-s2-s1 to h2 which receives it. This choice is due to the fact that it is always better to use the same clock to measure a delay. 
+The RTT between 2 switches is calculated with the help of a probe. The probe is sent from h1 and goes through s1-s2-s5-s3-s4 and back to s3-s5-s2-s1 to h2 which receives it. This choice is due to the fact that it is always better to use the same clock to measure a delay. 
 
 The OWD is calculated by subtracting from the RTT the delay introduced my the switches and halving the result. 
 
 Legend: RSij, where i=# of the switch and j=the times the packet crossed the switch.
 
-**OWD = ( RTT - (RS11 + RS21 + RS31 + RS4 + RS32 + RS22 + RS12) ) / 2**
+**OWD = ( RTT - (RS11 + RS21 + RS51 + RS31 + RS4 + RS32 + RS52 + RS22 + RS12) ) / 2**
 
 ## Test results
 Every test is simulated through the use of **linux traffic control (tc)** with the help of a simulated Mininet network. The test results are divided in 2 cases: normal and good case.
@@ -33,7 +33,7 @@ First, set the Mininet delay value.
 1 - Go on the file test_topo.py and edit it.
 2 - Go on line 43, 44 and 45 and edit the value of delay in the function **self.addLink** - format are Xms, Xs, etc.. with X being the value of the delay
 
-Then, open 2 terminals in P4_delayLink/.
+Then, open 2 terminals in P4_delayLink/StarTopo/.
 
 ### Collecting data
 

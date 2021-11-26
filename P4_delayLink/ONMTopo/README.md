@@ -1,4 +1,4 @@
-# OWD delay link
+# ONM topology 4 hops delay link
 A 2 hosts, 4 switch network that calculates OWD using a probe based algorithm.
 <img src="/misc/img/publication-ONMTopo.png" alt="onm.png" style="height=70%"/> 
 
@@ -33,7 +33,7 @@ First, set the Mininet delay value.
 1 - Go on the file test_topo.py and edit it.
 2 - Go on line 43, 44 and 45 and edit the value of delay in the function **self.addLink** - format are Xms, Xs, etc.. with X being the value of the delay
 
-Then, open 2 terminals in P4_delayLink/.
+Then, open 2 terminals in P4_delayLink/ONMTopo/.
 
 ### Collecting data
 
