@@ -41,10 +41,10 @@ class SingleSwitchTopo(Topo):
 
         self.addLink(host1, switch1, port1=0,port2=1)
         self.addLink(host2, switch1, port1=0,port2=4)
-        self.addLink(switch1, switch2, port1=2,port2=1, delay="100ms")
-        self.addLink(switch2, switch5, port1=2,port2=1, delay="100ms")
-        self.addLink(switch5, switch3, port1=2,port2=1, delay="100ms")
-        self.addLink(switch3, switch4, port1=2,port2=1, delay="100ms")
+        self.addLink(switch1, switch2, port1=2,port2=1, delay="200ms")
+        self.addLink(switch2, switch5, port1=2,port2=1, delay="200ms")
+        self.addLink(switch5, switch3, port1=2,port2=1, delay="200ms")
+        self.addLink(switch3, switch4, port1=2,port2=1, delay="200ms")
         self.addLink(switch4, switch5, port1=2,port2=3)
         self.addLink(switch5, switch1, port1=4,port2=3)
 

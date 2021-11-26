@@ -40,9 +40,9 @@ class SingleSwitchTopo(Topo):
 
         self.addLink(host1, switch1, port1=0,port2=1)
         self.addLink(host2, switch1, port1=0,port2=3)
-        self.addLink(switch1, switch2, port1=2,port2=1, delay="100ms")
-        self.addLink(switch2, switch3, port1=2,port2=1, delay="100ms")
-        self.addLink(switch3, switch4, port1=2,port2=1, delay="100ms")
+        self.addLink(switch1, switch2, port1=2,port2=1, delay="50ms")
+        self.addLink(switch2, switch3, port1=2,port2=1, delay="50ms")
+        self.addLink(switch3, switch4, port1=2,port2=1, delay="50ms")
 
 def main():
     topo = SingleSwitchTopo(args.behavioral_exe, args.json, args.thrift_port, args.pcap_dump)
