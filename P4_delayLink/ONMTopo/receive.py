@@ -20,6 +20,7 @@ parser.add_argument('-f', type=str, help='The file in which entries are saved - 
 args = parser.parse_args()
 
 filenameS1 = args.f
+i=0
 
 def get_if():
     ifs=get_if_list()
@@ -34,12 +35,12 @@ def get_if():
     return iface
 
 def handle_pkt(pkt):
-    pkt.show2()
-    if MyTunnel in pkt:
-        print("got a packet")
-        
+    global i
+    #pkt.show2()
+    if MyTunnel in pkt:        
 
         if (pkt.s11i > 0) and (pkt.s11e > 0) and (pkt.s21i > 0) and (pkt.s21e > 0) and (pkt.s31i > 0) and (pkt.s31e > 0) and (pkt.s4i > 0) and (pkt.s4e > 0) and (pkt.s32i > 0) and (pkt.s32e > 0) and (pkt.s22i > 0) and (pkt.s22e > 0) and (pkt.s12i > 0) and (pkt.s12e > 0):
+            print("got packet #"+str(i))
             f = open(filenameS1,"a")
             f.write(str(pkt.s11i))
             f.write(",")
@@ -69,6 +70,7 @@ def handle_pkt(pkt):
             f.write(",")
             f.write(str(pkt.s12e))
             f.write("\n")
+            i=i+1
             f.close()
             sys.stdout.flush()
 

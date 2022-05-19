@@ -15,6 +15,7 @@ How the OWD is measured:
 
 import statistics
 import argparse
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', type=str, help='The file from which the OWD is calculated - line format must be (6 entries): ts_ingress_rs1_1,ts_egress_rs1_1,ts_ingress_rs2,ts_egress_rs2,ts_ingress_rs1_2,ts_egress_rs1_2')
@@ -75,14 +76,24 @@ s2_m = s2_m/float(index)
 print "rs2 medio = "+ str(s2_m) + " micros"
 """
 
-rtt_m = rtt_m/float(index)
-print "rtt medio = "+ str(rtt_m) + " micros"
+#rtt_m = rtt_m/float(index)
+#print "rtt medio = "+ str(rtt_m) + " micros"
 
 owd_m = owd_m/float(index)
 print "owd medio = "+ str(owd_m) + " micros"
 
-print "owd's: "+str(var_owd)
+owd_sec=[]
+for owd in var_owd:
+    owd_sec.append(owd*(10**-3))
 
-#print "variance = " + str(statistics.variance(var_owd))
+print "owd's: "+str(owd_sec)
 
+#f = open('/tmp/dump.csv', 'w') 
+#with f:     
+#    write = csv.writer(f) 
+#    write.writerows(owd_csv) 
+
+
+print "STDEV = " + str(statistics.stdev(owd_sec))
+#f.close()
 s1.close()

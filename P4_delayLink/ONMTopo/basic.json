@@ -599,7 +599,7 @@
       ]
     },
     {
-      "name" : "basic211",
+      "name" : "basic208",
       "id" : 5,
       "runtime_data" : [],
       "primitives" : [
@@ -640,7 +640,7 @@
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 211,
+            "line" : 208,
             "column" : 12,
             "source_fragment" : "hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1"
           }
@@ -976,8 +976,74 @@
       "init_table" : "node_2",
       "tables" : [
         {
-          "name" : "MyIngress.ipv4_lpm",
+          "name" : "tbl_basic208",
           "id" : 0,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 208,
+            "column" : 30,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5],
+          "actions" : ["basic208"],
+          "base_default_next" : "MyIngress.myTunnel_exact",
+          "next_tables" : {
+            "basic208" : "MyIngress.myTunnel_exact"
+          },
+          "default_entry" : {
+            "action_id" : 5,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyIngress.myTunnel_exact",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 194,
+            "column" : 10,
+            "source_fragment" : "myTunnel_exact"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.myTunnel.dst_id",
+              "target" : ["myTunnel", "dst_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [4, 2],
+          "actions" : ["MyIngress.myTunnel_forward", "MyIngress.drop"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.myTunnel_forward" : null,
+            "MyIngress.drop" : null
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.ipv4_lpm",
+          "id" : 2,
           "source_info" : {
             "filename" : "basic.p4",
             "line" : 174,
@@ -1012,72 +1078,6 @@
             "action_data" : [],
             "action_entry_const" : false
           }
-        },
-        {
-          "name" : "tbl_basic211",
-          "id" : 1,
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 211,
-            "column" : 30,
-            "source_fragment" : "="
-          },
-          "key" : [],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [5],
-          "actions" : ["basic211"],
-          "base_default_next" : "MyIngress.myTunnel_exact",
-          "next_tables" : {
-            "basic211" : "MyIngress.myTunnel_exact"
-          },
-          "default_entry" : {
-            "action_id" : 5,
-            "action_const" : true,
-            "action_data" : [],
-            "action_entry_const" : true
-          }
-        },
-        {
-          "name" : "MyIngress.myTunnel_exact",
-          "id" : 2,
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 194,
-            "column" : 10,
-            "source_fragment" : "myTunnel_exact"
-          },
-          "key" : [
-            {
-              "match_type" : "exact",
-              "name" : "hdr.myTunnel.dst_id",
-              "target" : ["myTunnel", "dst_id"],
-              "mask" : null
-            }
-          ],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [4, 2],
-          "actions" : ["MyIngress.myTunnel_forward", "MyIngress.drop"],
-          "base_default_next" : null,
-          "next_tables" : {
-            "MyIngress.myTunnel_forward" : null,
-            "MyIngress.drop" : null
-          },
-          "default_entry" : {
-            "action_id" : 2,
-            "action_const" : false,
-            "action_data" : [],
-            "action_entry_const" : false
-          }
         }
       ],
       "action_profiles" : [],
@@ -1089,6 +1089,29 @@
             "filename" : "basic.p4",
             "line" : 207,
             "column" : 12,
+            "source_fragment" : "hdr.myTunnel.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["myTunnel", "$valid$"]
+              }
+            }
+          },
+          "true_next" : "tbl_basic208",
+          "false_next" : "node_5"
+        },
+        {
+          "name" : "node_5",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 210,
+            "column" : 19,
             "source_fragment" : "hdr.ipv4.isValid() && !hdr.myTunnel.isValid()"
           },
           "expression" : {
@@ -1126,31 +1149,8 @@
               }
             }
           },
-          "true_next" : "MyIngress.ipv4_lpm",
-          "false_next" : "node_4"
-        },
-        {
-          "name" : "node_4",
-          "id" : 1,
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 210,
-            "column" : 18,
-            "source_fragment" : "hdr.myTunnel.isValid()"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "d2b",
-              "left" : null,
-              "right" : {
-                "type" : "field",
-                "value" : ["myTunnel", "$valid$"]
-              }
-            }
-          },
           "false_next" : null,
-          "true_next" : "tbl_basic211"
+          "true_next" : "MyIngress.ipv4_lpm"
         }
       ]
     },

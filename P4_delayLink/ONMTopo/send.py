@@ -49,8 +49,8 @@ def main():
 
     if (dst_id is not None):
         print "sending PROBE on interface {} to dst_id {}".format(iface, str(dst_id))
-        pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
-        pkt = pkt / MyTunnel(dst_id=dst_id) / args.message # IP(dst = addr) 
+        pkt =  Ether(src=get_if_hwaddr(iface), dst='08:00:00:00:04:00')
+        pkt = pkt / MyTunnel(dst_id=dst_id) / IP(dst = addr) / args.message # IP(dst = addr) 
 
     else:
         print "sending on interface {} to IP addr {}".format(iface, str(addr))

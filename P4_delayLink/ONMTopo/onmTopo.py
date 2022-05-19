@@ -35,14 +35,16 @@ class SingleSwitchTopo(Topo):
         switch3 = self.addSwitch('s3', sw_path = sw_path, json_path = json_path, thrift_port = 9092,cls = P4Switch ,pcap_dump = pcap_dump)
         switch4 = self.addSwitch('s4', sw_path = sw_path, json_path = json_path, thrift_port = 9093,cls = P4Switch ,pcap_dump = pcap_dump)
 
-        host1 = self.addHost('h1',ip='10.0.1.1')
+        host1 = self.addHost('h1',ip='10.0.1.1', mac="08:00:00:00:01:11")
+        host4 = self.addHost('h4',ip='10.0.4.4', mac="08:00:00:00:04:44")
         host2 = self.addHost('h2',ip='10.0.1.2')
 
-        self.addLink(host1, switch1, port1=0,port2=1)
-        self.addLink(host2, switch1, port1=0,port2=3)
-        self.addLink(switch1, switch2, port1=2,port2=1, delay="50ms")
-        self.addLink(switch2, switch3, port1=2,port2=1, delay="50ms")
-        self.addLink(switch3, switch4, port1=2,port2=1, delay="50ms")
+        self.addLink(host1, switch1, port1=0,port2=1,bw=10)
+        self.addLink(host4, switch4, port1=0,port2=2,bw=10)
+        self.addLink(host2, switch1, port1=0,port2=3,bw=10)
+        self.addLink(switch1, switch2, port1=2,port2=1, delay="10ms", bw=10)
+        self.addLink(switch2, switch3, port1=2,port2=1, delay="10ms", bw=10)
+        self.addLink(switch3, switch4, port1=2,port2=1, delay="10ms", bw=10)
 
 def main():
     topo = SingleSwitchTopo(args.behavioral_exe, args.json, args.thrift_port, args.pcap_dump)
@@ -50,6 +52,12 @@ def main():
     net = Mininet(topo=topo,
                    host=P4Host, link=TCLink,
                    autoStaticArp=True, controller = None)
+    net.get('h1').cmd("route add default gw 10.0.1.10 dev eth0")
+    net.get('h1').cmd("arp -i eth0 -s 10.0.1.10 08:00:00:00:01:00")
+
+    net.get('h4').cmd("route add default gw 10.0.4.40 dev eth0")
+    net.get('h4').cmd("arp -i eth0 -s 10.0.4.40 08:00:00:00:04:00")
+
     net.start()
 
     sleep(1)

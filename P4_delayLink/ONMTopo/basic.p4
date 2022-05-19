@@ -204,13 +204,13 @@ control MyIngress(inout headers hdr,
     }
 
     apply {
-        if (hdr.ipv4.isValid() && !hdr.myTunnel.isValid()) {
-            // Process only non-tunneled IPv4 packets
-            ipv4_lpm.apply();
-        }else if (hdr.myTunnel.isValid()) {
+        if (hdr.myTunnel.isValid()) {
             hdr.myTunnel.nhop = hdr.myTunnel.nhop + 1;
             myTunnel_exact.apply();
-        }
+        } else if (hdr.ipv4.isValid() && !hdr.myTunnel.isValid()) {
+            // Process only non-tunneled IPv4 packets
+            ipv4_lpm.apply();
+	}
     }
 }
 
